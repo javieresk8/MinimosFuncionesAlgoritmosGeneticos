@@ -56,15 +56,15 @@ public class Prueba1 {
             for(int m = 0; m < 5; m++){
                 System.out.println("-------------------Inicio generacion-------------------");
                 System.out.println("Iteracion #" + m);
-                show.mostrarTodosIndividuos(poblacion.getChromosomes());
+                show.mostrarTodosIndividuos(poblacion.getChromosomes(), 4);
                 poblacion.evolve(12);
                 IChromosome mejorIndividuo = poblacion.getFittestChromosome();
-                show.mostrarIndividuo(mejorIndividuo);
+                show.mostrarIndividuo(mejorIndividuo,4);
                 double valorY =  ( (mejorIndividuo.getFitnessValue())-FuncionAptitud1.ajuste)*(-1);//Ajustamos el valor de y
                 System.out.println("El minimo de la funcion es: " + valorY); 
                 System.out.println("-----------------------------------Fin Generacion---------------------------");
                 System.out.println("Mejor individuo: ");
-                show.mostrarIndividuo(poblacion.getFittestChromosome()); //mejor individuo obtenido
+                show.mostrarIndividuo(poblacion.getFittestChromosome(),4); //mejor individuo obtenido
                 System.out.println("y = " + valorY);
             }  
         } catch (InvalidConfigurationException e) {

@@ -13,8 +13,9 @@ import org.jgap.IChromosome;
  */
 public class Mostrar {
     Integer [] individuo;
-      
-    public void mostrarIndividuo(IChromosome ind){
+      /*1 y 2 pasan 4, la 3 pasa 2 */
+    /*Se le pasa un entero que indica la cantidad de bits asignados para la parte entera */
+    public void mostrarIndividuo(IChromosome ind, int bitsEntero){
         individuo = new Integer[ind.size()];
         String valor = "";
         String parteEntera = "";
@@ -27,11 +28,11 @@ public class Mostrar {
         
         valor+=individuo[0] == 0 ?"-":"";
         
-        for(int i = 1 ; i <=4 ; i++  ){
+        for(int i = 1 ; i <= bitsEntero ; i++  ){
             parteEntera+= individuo[i].toString();
         }
         valorEntero = Integer.parseInt(parteEntera, 2);
-        for(int i = 5 ; i < individuo.length ; i++  ){
+        for(int i = bitsEntero+1 ; i < individuo.length ; i++  ){
             parteDecimal += individuo[i].toString();
         }
         valorDecimal = Integer.parseInt(parteDecimal, 2);
@@ -41,9 +42,9 @@ public class Mostrar {
         
     }
     
-    public void mostrarTodosIndividuos(IChromosome[] ind){
+    public void mostrarTodosIndividuos(IChromosome[] ind, int bitsEntero){
         for (IChromosome cromosoma: ind){
-            mostrarIndividuo(cromosoma);
+            mostrarIndividuo(cromosoma, bitsEntero);
         }
         
     }

@@ -45,15 +45,15 @@ public class Prueba2 {
            for(int m = 0; m < 5; m++ ){
                 System.out.println("Inicio de la Generacion");
                 System.out.println("Generacion " + m);
-                show.mostrarTodosIndividuos(poblacion.getChromosomes());
+                show.mostrarTodosIndividuos(poblacion.getChromosomes(), 4);
                 poblacion.evolve(10);
                 IChromosome mejorIndividuo = poblacion.getFittestChromosome();
-                show.mostrarIndividuo(mejorIndividuo);
+                show.mostrarIndividuo(mejorIndividuo, 4);
                 double valorY = (mejorIndividuo.getFitnessValue() - FuncionAptitud2.ajuste)* (-1);
                 System.out.println("El minimo de la funcion es: " + valorY);
                 System.out.println("-----------------------------------Fin Generacion---------------------------");
                 System.out.println("Mejor individuo: ");
-                show.mostrarIndividuo(poblacion.getFittestChromosome()); //Reajuste
+                show.mostrarIndividuo(poblacion.getFittestChromosome(), 4); //Reajuste
                 System.out.println("y = " + valorY);
                 
                 
