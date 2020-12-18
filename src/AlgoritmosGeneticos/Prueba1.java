@@ -48,7 +48,7 @@ public class Prueba1 {
 //            }
             Chromosome cromosomaNumero = new Chromosome(configuracion, genes);
             configuracion.setSampleChromosome(cromosomaNumero);
-            configuracion.setPopulationSize(7);
+            configuracion.setPopulationSize(15);
             Genotype poblacion = Genotype.randomInitialGenotype(configuracion);
             System.err.println("Poblacion iniciada");
             Mostrar show = new Mostrar();
@@ -60,11 +60,12 @@ public class Prueba1 {
                 poblacion.evolve(12);
                 IChromosome mejorIndividuo = poblacion.getFittestChromosome();
                 show.mostrarIndividuo(mejorIndividuo);
-                System.out.println("El minimo de la funcion es: " + (mejorIndividuo.getFitnessValue()-FuncionAptitud1.ajuste)); //Ajustamos el valor
+                double valorY =  ( (mejorIndividuo.getFitnessValue())-FuncionAptitud1.ajuste)*(-1);//Ajustamos el valor de y
+                System.out.println("El minimo de la funcion es: " + valorY); 
                 System.out.println("-----------------------------------Fin Generacion---------------------------");
                 System.out.println("Mejor individuo: ");
                 show.mostrarIndividuo(poblacion.getFittestChromosome()); //mejor individuo obtenido
-                System.out.println("y = " + (mejorIndividuo.getFitnessValue()-FuncionAptitud1.ajuste));
+                System.out.println("y = " + valorY);
             }  
         } catch (InvalidConfigurationException e) {
             System.out.println("No se pudo ejecutar el AG");

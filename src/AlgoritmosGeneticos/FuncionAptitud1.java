@@ -15,7 +15,8 @@ import org.jgap.IChromosome;
 public class FuncionAptitud1 extends FitnessFunction{
     /**(x^2-5x+9)lg(2)+lg(125)-3 = y*/
     private double fitness;
-    public static double ajuste = 102.84;
+    public static double traslado = 1; //Esto evita que fitness caiga en un valor negativo
+    public static double ajuste = 102.84 + traslado;
     public FuncionAptitud1(){
         fitness = 0;
     }
