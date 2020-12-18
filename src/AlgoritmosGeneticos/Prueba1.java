@@ -48,7 +48,7 @@ public class Prueba1 {
 //            }
             Chromosome cromosomaNumero = new Chromosome(configuracion, genes);
             configuracion.setSampleChromosome(cromosomaNumero);
-            configuracion.setPopulationSize(15);
+            configuracion.setPopulationSize(7);
             Genotype poblacion = Genotype.randomInitialGenotype(configuracion);
             System.err.println("Poblacion iniciada");
             Mostrar show = new Mostrar();
