@@ -11,14 +11,18 @@ import org.jgap.IChromosome;
 public class FuncionAptitud2 extends FitnessFunction{
     /*log(2^(2-x))^(2+x)+log(1250)-4*/
     private double fitness;
-    public static double traslado = 1;
-    public static double valorMax = 15.127;
+    public static double traslado = 2; //Para evitar caer en valores negativos en Y y fitness no sea negativo
+    public static double valorMax = 15.99; //El decimal se debe a que abajo limitamos la parte decimal
+    /*para no tomar valores mayores a 2 y no obtener valores NaN
+    delimitadorDominio se restara a todos los valores de X para que no 
+    sobrepase el valor de 2*/
     public static double delimitadorDominio = valorMax -2;
     
-    public static double ajuste = traslado;
+    public static double ajuste;
     
     public FuncionAptitud2(){
         this.fitness = 0;
+        this.ajuste = calcularFuncion(2) + this.traslado;
     }
 
     @Override
@@ -51,7 +55,7 @@ public class FuncionAptitud2 extends FitnessFunction{
         }
         valorDecimal /= 100;
         valorX = (valorEntero + valorDecimal) ; 
-        System.err.println("el vlaor de x salio " + valorX);
+        //System.err.println("el vlaor de x salio " + valorX);
         if (individuo[0] == 0){
             valorX *= (-1);
         }
@@ -59,11 +63,15 @@ public class FuncionAptitud2 extends FitnessFunction{
 //        System.err.println("Luego de la resta es " + valorX);
 //        System.out.println("El delimitador de dom es  " + delimitadorDominio);
         
-        fitness = ajuste - ( Math.pow( Math.log10(Math.pow(2, 2-valorX)), 2 + valorX) +
-                Math.log10(1250) -4);
-        System.out.println("El valor de fitness resulto  " + fitness + "con x = " + valorX);  
+        fitness = ajuste - calcularFuncion(valorX);
+       // System.out.println("El valor de fitness resulto  " + fitness + "con x = " + valorX);  
        
         
+    }
+    
+    private double calcularFuncion(double x ){
+        return ( Math.pow( Math.log10(Math.pow(2, 2-x)), 2 + x) +
+                Math.log10(1250) -4);
     }
     
 }
