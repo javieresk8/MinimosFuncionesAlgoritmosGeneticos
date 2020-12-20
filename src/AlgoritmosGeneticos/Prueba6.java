@@ -1,3 +1,4 @@
+
 package AlgoritmosGeneticos;
 
 import org.jgap.Chromosome;
@@ -15,20 +16,20 @@ import org.jgap.impl.IntegerGene;
  * @author Javier Erazo 
  * 
  */
-public class Prueba5 {
+public class Prueba6 {
     
    public void empezar(){
        try {
            Configuration configuracion = new DefaultConfiguration();
-           FitnessFunction funcion = new FuncionAptitud5();
+           FitnessFunction funcion = new FuncionAptitud6();
            configuracion.setFitnessFunction(funcion);
            /*Se utiliza un bit de signo, 4 bits para la parte entera y 
            7 bits para la parte decimal de dos digitos*/
            Gene[] genes = new Gene[12];
+           
            for (int i = 0; i < genes.length; i++){
                genes[i] = new IntegerGene(configuracion, 0, 1); 
            }
-           
            
            Chromosome cromosomaNumero = new Chromosome(configuracion, genes);
            configuracion.setSampleChromosome(cromosomaNumero);
